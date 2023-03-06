@@ -186,15 +186,15 @@ class _HomePageState extends State<HomePage>
               alignment: Alignment.center,
               transform: Matrix4.identity()
                 ..rotateZ(_counterClockwiseRotaionAnimation.value),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedBuilder(
-                    animation: _flipController,
-                    builder: (context,child){
-                      return Transform(
+              child: AnimatedBuilder(
+                animation: _flipController,
+                builder: (context,child){
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Transform(
                         transform: Matrix4.identity()
-                        ..rotateY(_flipAnimation.value),
+                          ..rotateY(_flipAnimation.value),
                         alignment: Alignment.centerRight,
                         child: ClipPath(
                           clipper: const HalfCircleClipper(side: CircleSide.left),
@@ -204,15 +204,10 @@ class _HomePageState extends State<HomePage>
                             color: const Color(0xff0057b7),
                           ),
                         ),
-                      );
-                    }
-                  ),
-                  AnimatedBuilder(
-                    animation: _flipAnimation,
-                    builder: (context,child){
-                      return Transform(
+                      ),
+                      Transform(
                         transform: Matrix4.identity()
-                        ..rotateY(_flipAnimation.value),
+                          ..rotateY(_flipAnimation.value),
                         alignment: Alignment.centerLeft,
                         child: ClipPath(
                           clipper: const HalfCircleClipper(side: CircleSide.right),
@@ -222,10 +217,10 @@ class _HomePageState extends State<HomePage>
                             color: const Color(0xffffd700),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ],
+                      ),
+                    ],
+                  );
+                },
               ),
             );
           },
